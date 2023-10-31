@@ -298,6 +298,8 @@ BUILTIN_TARGETS = {
           'hc32f4a2' : target_HC32F4A0.HC32F4A0xI,
           'hc32m423xa' : target_HC32M423.HC32M423xA,
           'hc32m424xc' : target_HC32M424.HC32M424xC,
+          'hc32f115x6' : target_HC32x120.HC32F120x6TA,
+          'hc32f115x8' : target_HC32x120.HC32F120x8TA,
           'hc32f120x6' : target_HC32x120.HC32F120x6TA,
           'hc32f120x8' : target_HC32x120.HC32F120x8TA,
           'hc32m120' : target_HC32x120.HC32M120,
