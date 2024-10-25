@@ -192,7 +192,7 @@ class HC32F467xG(CoreSightTarget):
     VENDOR = "HDSC"
 
     MEMORY_MAP = MemoryMap(
-        FlashRegion( start=0x00000000, length=0x100000, page_size=0x800, sector_size=0x2000,
+        FlashRegion( start=0x00000000, length=0x100000, page_size=0x400, sector_size=0x2000,
                         is_boot_memory=True,
                         algo=FLASH_ALGO),
         FlashRegion( start=0x3000000, length=0x1800, page_size=0x1800, sector_size=0x1800,
