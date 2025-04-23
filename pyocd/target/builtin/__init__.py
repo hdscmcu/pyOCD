@@ -123,6 +123,7 @@ from . import target_HC32F4A0
 from . import target_HC32F4A8
 from . import target_HC32M423
 from . import target_HC32M424
+from . import target_HC32M441
 from . import target_HC32F115
 from . import target_HC32F155
 from . import target_HC32F160
@@ -320,6 +321,9 @@ BUILTIN_TARGETS = {
           'hc32f4a8' : target_HC32F4A8.HC32F4A8xI,
           'hc32m423xa' : target_HC32M423.HC32M423xA,
           'hc32m424xc' : target_HC32M424.HC32M424xC,
+          'hc32m441xa' : target_HC32M441.HC32M441xA,
+          'hc32m441xc' : target_HC32M441.HC32M441xC,
+          'hc32m441' : target_HC32M441.HC32M441xC,
           'hc32f120x6' : target_HC32x120.HC32F120x6TA,
           'hc32f120x8' : target_HC32x120.HC32F120x8TA,
           'hc32f120' : target_HC32x120.HC32F120x8TA,
