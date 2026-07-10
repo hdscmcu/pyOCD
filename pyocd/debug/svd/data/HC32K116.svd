@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 <device schemaVersion="1.1" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:noNamespaceSchemaLocation="CMSIS-SVD_Schema_1_1.xsd">
-    <name>HC32K118</name>
+    <name>HC32K116</name>
     <version>1.0</version>
-    <description>HC32K118</description>
+    <description>HC32K116</description>
     <cpu>
         <name>CM0+</name>
         <revision>r0p1</revision>
@@ -6045,7 +6045,7 @@
                     <description>desc LVD1ICGCR</description>
                     <addressOffset>0x684</addressOffset>
                     <size>16</size>
-                    <access>read-only</access>
+                    <access>read-write</access>
                     <resetValue>0xFFFF</resetValue>
                     <resetMask>0xF307</resetMask>
                     <fields>
@@ -6054,49 +6054,49 @@
                             <description>desc LVD1DFS</description>
                             <msb>1</msb>
                             <lsb>0</lsb>
-                            <access>read-only</access>
+                            <access>read-write</access>
                         </field>
                         <field>
                             <name>LVD1DFDIS</name>
                             <description>desc LVD1DFDIS</description>
                             <msb>2</msb>
                             <lsb>2</lsb>
-                            <access>read-only</access>
+                            <access>read-write</access>
                         </field>
                         <field>
                             <name>LVD1LVL</name>
                             <description>desc LVD1LVL</description>
                             <msb>9</msb>
                             <lsb>8</lsb>
-                            <access>read-only</access>
+                            <access>read-write</access>
                         </field>
                         <field>
                             <name>LVD1NMIS</name>
                             <description>desc LVD1NMIS</description>
                             <msb>12</msb>
                             <lsb>12</lsb>
-                            <access>read-only</access>
+                            <access>read-write</access>
                         </field>
                         <field>
                             <name>LVD1IRS</name>
                             <description>desc LVD1IRS</description>
                             <msb>13</msb>
                             <lsb>13</lsb>
-                            <access>read-only</access>
+                            <access>read-write</access>
                         </field>
                         <field>
                             <name>LVD1IRDIS</name>
                             <description>desc LVD1IRDIS</description>
                             <msb>14</msb>
                             <lsb>14</lsb>
-                            <access>read-only</access>
+                            <access>read-write</access>
                         </field>
                         <field>
                             <name>LVD1DIS</name>
                             <description>desc LVD1DIS</description>
                             <msb>15</msb>
                             <lsb>15</lsb>
-                            <access>read-only</access>
+                            <access>read-write</access>
                         </field>
                     </fields>
                 </register>

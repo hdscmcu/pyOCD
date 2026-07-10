@@ -21,12 +21,18 @@
         <peripheral>
             <name>ADC</name>
             <description>desc ADC</description>
+            <groupName>ADC</groupName>
             <baseAddress>0x40030000</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0xC4</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>ADC</name>
+                <description>ADC interrupt</description>
+                <value>73</value>
+            </interrupt>
             <registers>
                 <register>
                     <name>STR</name>
@@ -53,7 +59,7 @@
                     <size>16</size>
                     <access>read-write</access>
                     <resetValue>0x800</resetValue>
-                    <resetMask>0xFC7</resetMask>
+                    <resetMask>0x7C7</resetMask>
                     <fields>
                         <field>
                             <name>MS</name>
@@ -81,13 +87,6 @@
                             <description>desc AVCNT</description>
                             <msb>10</msb>
                             <lsb>8</lsb>
-                            <access>read-write</access>
-                        </field>
-                        <field>
-                            <name>BUFDIS</name>
-                            <description>desc BUFDIS</description>
-                            <msb>11</msb>
-                            <lsb>11</lsb>
                             <access>read-write</access>
                         </field>
                     </fields>
@@ -149,12 +148,12 @@
                     <size>32</size>
                     <access>read-write</access>
                     <resetValue>0x0</resetValue>
-                    <resetMask>0x1FFFF</resetMask>
+                    <resetMask>0xFFFF</resetMask>
                     <fields>
                         <field>
                             <name>CHSELA</name>
                             <description>desc CHSELA</description>
-                            <msb>16</msb>
+                            <msb>15</msb>
                             <lsb>0</lsb>
                             <access>read-write</access>
                         </field>
@@ -167,12 +166,12 @@
                     <size>32</size>
                     <access>read-write</access>
                     <resetValue>0x0</resetValue>
-                    <resetMask>0x1FFFF</resetMask>
+                    <resetMask>0xFFFF</resetMask>
                     <fields>
                         <field>
                             <name>CHSELB</name>
                             <description>desc CHSELB</description>
-                            <msb>16</msb>
+                            <msb>15</msb>
                             <lsb>0</lsb>
                             <access>read-write</access>
                         </field>
@@ -185,12 +184,12 @@
                     <size>32</size>
                     <access>read-write</access>
                     <resetValue>0x0</resetValue>
-                    <resetMask>0x1FFFF</resetMask>
+                    <resetMask>0xFFFF</resetMask>
                     <fields>
                         <field>
                             <name>AVCHSEL</name>
                             <description>desc AVCHSEL</description>
-                            <msb>16</msb>
+                            <msb>15</msb>
                             <lsb>0</lsb>
                             <access>read-write</access>
                         </field>
@@ -394,27 +393,18 @@
                     <resetMask>0xFF</resetMask>
                 </register>
                 <register>
-                    <name>SSTR16</name>
-                    <description>desc SSTR16</description>
-                    <addressOffset>0x30</addressOffset>
-                    <size>8</size>
-                    <access>read-write</access>
-                    <resetValue>0x4</resetValue>
-                    <resetMask>0xFF</resetMask>
-                </register>
-                <register>
                     <name>CHSELRC</name>
                     <description>desc CHSELRC</description>
                     <addressOffset>0x40</addressOffset>
                     <size>32</size>
                     <access>read-write</access>
                     <resetValue>0x0</resetValue>
-                    <resetMask>0x1FFFF</resetMask>
+                    <resetMask>0xFFFF</resetMask>
                     <fields>
                         <field>
                             <name>CHSELC</name>
                             <description>desc CHSELC</description>
-                            <msb>16</msb>
+                            <msb>15</msb>
                             <lsb>0</lsb>
                             <access>read-write</access>
                         </field>
@@ -689,15 +679,6 @@
                     <resetMask>0xFFFF</resetMask>
                 </register>
                 <register>
-                    <name>DR16</name>
-                    <description>desc DR16</description>
-                    <addressOffset>0x70</addressOffset>
-                    <size>16</size>
-                    <access>read-only</access>
-                    <resetValue>0x0</resetValue>
-                    <resetMask>0xFFFF</resetMask>
-                </register>
-                <register>
                     <name>AWDCR</name>
                     <description>desc AWDCR</description>
                     <addressOffset>0xA0</addressOffset>
@@ -930,6 +911,7 @@
         <peripheral>
             <name>AOS</name>
             <description>desc AOS</description>
+            <groupName>AOS</groupName>
             <baseAddress>0x40010800</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
@@ -1321,12 +1303,18 @@
         <peripheral>
             <name>CMP1</name>
             <description>desc CMP</description>
+            <groupName>CMP</groupName>
             <baseAddress>0x4004A000</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x20</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>CMP1</name>
+                <description>CMP1 interrupt</description>
+                <value>64</value>
+            </interrupt>
             <registers>
                 <register>
                     <name>MDR</name>
@@ -1726,26 +1714,39 @@
         <peripheral derivedFrom="CMP1">
             <name>CMP2</name>
             <description>desc CMP</description>
+            <groupName>CMP</groupName>
             <baseAddress>0x4004A100</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x20</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>CMP2</name>
+                <description>CMP2 interrupt</description>
+                <value>65</value>
+            </interrupt>
         </peripheral>
         <peripheral derivedFrom="CMP1">
             <name>CMP3</name>
             <description>desc CMP</description>
+            <groupName>CMP</groupName>
             <baseAddress>0x4004A400</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x20</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>CMP3</name>
+                <description>CMP3 interrupt</description>
+                <value>66</value>
+            </interrupt>
         </peripheral>
         <peripheral>
             <name>CMP_COMMON</name>
             <description>desc CMP_COMMON</description>
+            <groupName>CMP_COMMON</groupName>
             <baseAddress>0x4004A000</baseAddress>
             <alternatePeripheral>CMP1</alternatePeripheral>
             <addressBlock>
@@ -1809,12 +1810,18 @@
         <peripheral>
             <name>CMU</name>
             <description>desc CMU</description>
+            <groupName>CMU</groupName>
             <baseAddress>0x40054400</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x49</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>XTAL_STOP</name>
+                <description>Xtal stop interrupt</description>
+                <value>36</value>
+            </interrupt>
             <registers>
                 <register>
                     <name>ADCKSEL</name>
@@ -2334,7 +2341,7 @@
                     <size>32</size>
                     <access>read-write</access>
                     <resetValue>0x35004E11</resetValue>
-                    <resetMask>0xFF077F93</resetMask>
+                    <resetMask>0xFF007F93</resetMask>
                     <fields>
                         <field>
                             <name>PLLM</name>
@@ -2362,13 +2369,6 @@
                             <description>desc PLLN</description>
                             <msb>14</msb>
                             <lsb>8</lsb>
-                            <access>read-write</access>
-                        </field>
-                        <field>
-                            <name>PLLF</name>
-                            <description>desc PLLF</description>
-                            <msb>18</msb>
-                            <lsb>16</lsb>
                             <access>read-write</access>
                         </field>
                         <field>
@@ -2410,6 +2410,7 @@
         <peripheral>
             <name>CRC</name>
             <description>desc CRC</description>
+            <groupName>CRC</groupName>
             <baseAddress>0x40050400</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
@@ -2760,6 +2761,7 @@
         <peripheral>
             <name>DBGC</name>
             <description>desc DBGC</description>
+            <groupName>DBGC</groupName>
             <baseAddress>0xE0042000</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
@@ -2767,15 +2769,6 @@
                 <usage>registers</usage>
             </addressBlock>
             <registers>
-                <register>
-                    <name>CHIPID</name>
-                    <description>desc CHIPID</description>
-                    <addressOffset>0xC</addressOffset>
-                    <size>32</size>
-                    <access>read-only</access>
-                    <resetValue>0x58480413</resetValue>
-                    <resetMask>0xFFFFFFFF</resetMask>
-                </register>
                 <register>
                     <name>FMCCTL</name>
                     <description>desc FMCCTL</description>
@@ -2804,140 +2797,6 @@
                             <description>desc PCROPERSERR</description>
                             <msb>18</msb>
                             <lsb>18</lsb>
-                            <access>read-write</access>
-                        </field>
-                    </fields>
-                </register>
-                <register>
-                    <name>MCUDBGCSTAT</name>
-                    <description>desc MCUDBGCSTAT</description>
-                    <addressOffset>0x1C</addressOffset>
-                    <size>32</size>
-                    <access>read-write</access>
-                    <resetValue>0x0</resetValue>
-                    <resetMask>0x3</resetMask>
-                    <fields>
-                        <field>
-                            <name>CDBGPWRUPREQ</name>
-                            <description>desc CDBGPWRUPREQ</description>
-                            <msb>0</msb>
-                            <lsb>0</lsb>
-                            <access>read-write</access>
-                        </field>
-                        <field>
-                            <name>CDBGPWRUPACK</name>
-                            <description>desc CDBGPWRUPACK</description>
-                            <msb>1</msb>
-                            <lsb>1</lsb>
-                            <access>read-write</access>
-                        </field>
-                    </fields>
-                </register>
-                <register>
-                    <name>MCUSTPCTL</name>
-                    <description>desc MCUSTPCTL</description>
-                    <addressOffset>0x20</addressOffset>
-                    <size>32</size>
-                    <access>read-write</access>
-                    <resetValue>0x9</resetValue>
-                    <resetMask>0xFDFB</resetMask>
-                    <fields>
-                        <field>
-                            <name>SWDTSTP</name>
-                            <description>desc SWDTSTP</description>
-                            <msb>0</msb>
-                            <lsb>0</lsb>
-                            <access>read-write</access>
-                        </field>
-                        <field>
-                            <name>WDTSTP</name>
-                            <description>desc WDTSTP</description>
-                            <msb>1</msb>
-                            <lsb>1</lsb>
-                            <access>read-write</access>
-                        </field>
-                        <field>
-                            <name>PVD0STP</name>
-                            <description>desc PVD0STP</description>
-                            <msb>3</msb>
-                            <lsb>3</lsb>
-                            <access>read-write</access>
-                        </field>
-                        <field>
-                            <name>PVD1STP</name>
-                            <description>desc PVD1STP</description>
-                            <msb>4</msb>
-                            <lsb>4</lsb>
-                            <access>read-write</access>
-                        </field>
-                        <field>
-                            <name>PVD2STP</name>
-                            <description>desc PVD2STP</description>
-                            <msb>5</msb>
-                            <lsb>5</lsb>
-                            <access>read-write</access>
-                        </field>
-                        <field>
-                            <name>TMR01STP</name>
-                            <description>desc TMR01STP</description>
-                            <msb>6</msb>
-                            <lsb>6</lsb>
-                            <access>read-write</access>
-                        </field>
-                        <field>
-                            <name>TMR02STP</name>
-                            <description>desc TMR02STP</description>
-                            <msb>7</msb>
-                            <lsb>7</lsb>
-                            <access>read-write</access>
-                        </field>
-                        <field>
-                            <name>TMR4STP</name>
-                            <description>desc TMR4STP</description>
-                            <msb>8</msb>
-                            <lsb>8</lsb>
-                            <access>read-write</access>
-                        </field>
-                        <field>
-                            <name>TMRA1STP</name>
-                            <description>desc TMRA1STP</description>
-                            <msb>10</msb>
-                            <lsb>10</lsb>
-                            <access>read-write</access>
-                        </field>
-                        <field>
-                            <name>TMRA2STP</name>
-                            <description>desc TMRA2STP</description>
-                            <msb>11</msb>
-                            <lsb>11</lsb>
-                            <access>read-write</access>
-                        </field>
-                        <field>
-                            <name>TMRA3STP</name>
-                            <description>desc TMRA3STP</description>
-                            <msb>12</msb>
-                            <lsb>12</lsb>
-                            <access>read-write</access>
-                        </field>
-                        <field>
-                            <name>TMRA4STP</name>
-                            <description>desc TMRA4STP</description>
-                            <msb>13</msb>
-                            <lsb>13</lsb>
-                            <access>read-write</access>
-                        </field>
-                        <field>
-                            <name>TMRA5STP</name>
-                            <description>desc TMRA5STP</description>
-                            <msb>14</msb>
-                            <lsb>14</lsb>
-                            <access>read-write</access>
-                        </field>
-                        <field>
-                            <name>HALLSTP</name>
-                            <description>desc HALLSTP</description>
-                            <msb>15</msb>
-                            <lsb>15</lsb>
                             <access>read-write</access>
                         </field>
                     </fields>
@@ -3029,12 +2888,18 @@
         <peripheral>
             <name>DCU</name>
             <description>desc DCU</description>
+            <groupName>DCU</groupName>
             <baseAddress>0x40052000</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x1C</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>DCU</name>
+                <description>DCU interrupt</description>
+                <value>31</value>
+            </interrupt>
             <registers>
                 <register>
                     <name>CTL</name>
@@ -3294,12 +3159,38 @@
         <peripheral>
             <name>DMA</name>
             <description>desc DMA</description>
+            <groupName>DMA</groupName>
             <baseAddress>0x40053000</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x138</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>DMA_Error</name>
+                <description>DMA error interrupt</description>
+                <value>24</value>
+            </interrupt>
+            <interrupt>
+                <name>DMA_TC0_BTC0</name>
+                <description>DMA Transmission Complete 0 or Block Transmission Complete 0 interrupt</description>
+                <value>25</value>
+            </interrupt>
+            <interrupt>
+                <name>DMA_TC1_BTC1</name>
+                <description>DMA Transmission Complete 1 or Block Transmission Complete 1 interrupt</description>
+                <value>26</value>
+            </interrupt>
+            <interrupt>
+                <name>DMA_TC2_BTC2</name>
+                <description>DMA Transmission Complete 2 or Block Transmission Complete 2 interrupt</description>
+                <value>27</value>
+            </interrupt>
+            <interrupt>
+                <name>DMA_TC3_BTC3</name>
+                <description>DMA Transmission Complete 3 or Block Transmission Complete 3 interrupt</description>
+                <value>28</value>
+            </interrupt>
             <registers>
                 <register>
                     <name>EN</name>
@@ -5311,12 +5202,23 @@
         <peripheral>
             <name>EFM</name>
             <description>desc EFM</description>
+            <groupName>EFM</groupName>
             <baseAddress>0x40010400</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x289</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>PEERR_RDCOL</name>
+                <description>EFM program erase error or read column interrupt</description>
+                <value>29</value>
+            </interrupt>
+            <interrupt>
+                <name>OPTEND</name>
+                <description>EFM Operation End interrupt</description>
+                <value>30</value>
+            </interrupt>
             <registers>
                 <register>
                     <name>FAPRT</name>
@@ -5607,15 +5509,6 @@
                     </fields>
                 </register>
                 <register>
-                    <name>CHIPID</name>
-                    <description>desc CHIPID</description>
-                    <addressOffset>0x40</addressOffset>
-                    <size>32</size>
-                    <access>read-only</access>
-                    <resetValue>0x58480413</resetValue>
-                    <resetMask>0xFFFFFFFF</resetMask>
-                </register>
-                <register>
                     <name>UQID0</name>
                     <description>desc UQID0</description>
                     <addressOffset>0x50</addressOffset>
@@ -5623,6 +5516,36 @@
                     <access>read-only</access>
                     <resetValue>0x0</resetValue>
                     <resetMask>0xFFFFFFFF</resetMask>
+                    <fields>
+                        <field>
+                            <name>Y_LOCATION</name>
+                            <description>desc Y_LOCATION</description>
+                            <msb>7</msb>
+                            <lsb>0</lsb>
+                            <access>read-only</access>
+                        </field>
+                        <field>
+                            <name>X_LOCATION</name>
+                            <description>desc X_LOCATION</description>
+                            <msb>15</msb>
+                            <lsb>8</lsb>
+                            <access>read-only</access>
+                        </field>
+                        <field>
+                            <name>WAFER_ID</name>
+                            <description>desc WAFER_ID</description>
+                            <msb>23</msb>
+                            <lsb>16</lsb>
+                            <access>read-only</access>
+                        </field>
+                        <field>
+                            <name>LOT_ID</name>
+                            <description>desc LOT_ID</description>
+                            <msb>31</msb>
+                            <lsb>24</lsb>
+                            <access>read-only</access>
+                        </field>
+                    </fields>
                 </register>
                 <register>
                     <name>UQID1</name>
@@ -5632,6 +5555,15 @@
                     <access>read-only</access>
                     <resetValue>0x0</resetValue>
                     <resetMask>0xFFFFFFFF</resetMask>
+                    <fields>
+                        <field>
+                            <name>LOT_ID</name>
+                            <description>desc LOT_ID</description>
+                            <msb>31</msb>
+                            <lsb>0</lsb>
+                            <access>read-only</access>
+                        </field>
+                    </fields>
                 </register>
                 <register>
                     <name>UQID2</name>
@@ -5640,7 +5572,23 @@
                     <size>32</size>
                     <access>read-only</access>
                     <resetValue>0x0</resetValue>
-                    <resetMask>0xFFFFFFFF</resetMask>
+                    <resetMask>0xFFFF00FF</resetMask>
+                    <fields>
+                        <field>
+                            <name>LOT_ID</name>
+                            <description>desc LOT_ID</description>
+                            <msb>7</msb>
+                            <lsb>0</lsb>
+                            <access>read-only</access>
+                        </field>
+                        <field>
+                            <name>PTNMFG</name>
+                            <description>desc PTNMFG</description>
+                            <msb>31</msb>
+                            <lsb>16</lsb>
+                            <access>read-only</access>
+                        </field>
+                    </fields>
                 </register>
                 <register>
                     <name>FOCDPRTFG</name>
@@ -5717,12 +5665,18 @@
         <peripheral>
             <name>EMB0</name>
             <description>desc EMB</description>
+            <groupName>EMB</groupName>
             <baseAddress>0x40017C00</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x1C</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>EMB_GR0</name>
+                <description>EMB Group0 interrupt</description>
+                <value>46</value>
+            </interrupt>
             <registers>
                 <register>
                     <name>CTL1</name>
@@ -6191,16 +6145,23 @@
         <peripheral derivedFrom="EMB0">
             <name>EMB1</name>
             <description>desc EMB</description>
+            <groupName>EMB</groupName>
             <baseAddress>0x40017C20</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x1C</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>EMB_GR1</name>
+                <description>EMB Group1 interrupt</description>
+                <value>47</value>
+            </interrupt>
         </peripheral>
         <peripheral>
             <name>FCM</name>
             <description>desc FCM</description>
+            <groupName>FCM</groupName>
             <baseAddress>0x40048400</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
@@ -6210,7 +6171,7 @@
             <interrupt>
                 <name>FCM</name>
                 <description>Frequency measurement interrupt</description>
-                <value>70</value>
+                <value>71</value>
             </interrupt>
             <registers>
                 <register>
@@ -6401,8 +6362,8 @@
                             <access>read-write</access>
                         </field>
                         <field>
-                            <name>ERRE</name>
-                            <description>desc ERRE</description>
+                            <name>ERRRE</name>
+                            <description>desc ERRRE</description>
                             <msb>7</msb>
                             <lsb>7</lsb>
                             <access>read-write</access>
@@ -6478,6 +6439,7 @@
         <peripheral>
             <name>GPIO</name>
             <description>desc GPIO</description>
+            <groupName>GPIO</groupName>
             <baseAddress>0x40053800</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
@@ -16982,12 +16944,18 @@
         <peripheral>
             <name>HALL</name>
             <description>desc HALL</description>
+            <groupName>HALL</groupName>
             <baseAddress>0x4001E800</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x34</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>HALL</name>
+                <description>HALL interrupt</description>
+                <value>63</value>
+            </interrupt>
             <registers>
                 <register>
                     <name>CTLR</name>
@@ -17152,12 +17120,18 @@
         <peripheral>
             <name>I2C</name>
             <description>desc I2C</description>
+            <groupName>I2C</groupName>
             <baseAddress>0x4004E000</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x3C</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>I2C</name>
+                <description>I2C interrupt</description>
+                <value>67</value>
+            </interrupt>
             <registers>
                 <register>
                     <name>CR1</name>
@@ -17409,7 +17383,7 @@
                     <size>32</size>
                     <access>read-write</access>
                     <resetValue>0x301B07</resetValue>
-                    <resetMask>0x1400</resetMask>
+                    <resetMask>0xF1C00</resetMask>
                     <fields>
                         <field>
                             <name>BUSWAIT</name>
@@ -17419,10 +17393,24 @@
                             <access>read-write</access>
                         </field>
                         <field>
+                            <name>NACKTRA_CLREN</name>
+                            <description>desc NACKTRA_CLREN</description>
+                            <msb>11</msb>
+                            <lsb>11</lsb>
+                            <access>read-write</access>
+                        </field>
+                        <field>
                             <name>BUSFREE_CLREN</name>
                             <description>desc BUSFREE_CLREN</description>
                             <msb>12</msb>
                             <lsb>12</lsb>
+                            <access>read-write</access>
+                        </field>
+                        <field>
+                            <name>SDADLY</name>
+                            <description>desc SDADLY</description>
+                            <msb>19</msb>
+                            <lsb>16</lsb>
                             <access>read-write</access>
                         </field>
                     </fields>
@@ -17465,8 +17453,8 @@
                             <access>read-write</access>
                         </field>
                         <field>
-                            <name>MASKEN0</name>
-                            <description>desc MASKEN0</description>
+                            <name>MASK0EN</name>
+                            <description>desc MASK0EN</description>
                             <msb>26</msb>
                             <lsb>26</lsb>
                             <access>read-write</access>
@@ -17511,8 +17499,8 @@
                             <access>read-write</access>
                         </field>
                         <field>
-                            <name>MASKEN1</name>
-                            <description>desc MASKEN1</description>
+                            <name>MASK1EN</name>
+                            <description>desc MASK1EN</description>
                             <msb>26</msb>
                             <lsb>26</lsb>
                             <access>read-write</access>
@@ -17990,6 +17978,7 @@
         <peripheral>
             <name>ICG</name>
             <description>desc ICG</description>
+            <groupName>ICG</groupName>
             <baseAddress>0x00020000</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
@@ -18202,12 +18191,138 @@
         <peripheral>
             <name>INTC</name>
             <description>desc INTC</description>
+            <groupName>INTC</groupName>
             <baseAddress>0x40051000</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x2AC</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>GLOBAL0_SWINT0</name>
+                <description>global interrupt 0 or software interrupt 0</description>
+                <value>0</value>
+            </interrupt>
+            <interrupt>
+                <name>GLOBAL1_SWINT1</name>
+                <description>global interrupt 1 or software interrupt 1</description>
+                <value>1</value>
+            </interrupt>
+            <interrupt>
+                <name>GLOBAL2_SWINT2</name>
+                <description>global interrupt 2 or software interrupt 2</description>
+                <value>2</value>
+            </interrupt>
+            <interrupt>
+                <name>GLOBAL3_SWINT3</name>
+                <description>global interrupt 3 or software interrupt 3</description>
+                <value>3</value>
+            </interrupt>
+            <interrupt>
+                <name>GLOBAL4_SWINT4</name>
+                <description>global interrupt 4 or software interrupt 4</description>
+                <value>4</value>
+            </interrupt>
+            <interrupt>
+                <name>GLOBAL5_SWINT5</name>
+                <description>global interrupt 5 or software interrupt 5</description>
+                <value>5</value>
+            </interrupt>
+            <interrupt>
+                <name>GLOBAL6_SWINT6</name>
+                <description>global interrupt 6 or software interrupt 6</description>
+                <value>6</value>
+            </interrupt>
+            <interrupt>
+                <name>GLOBAL7_SWINT7</name>
+                <description>global interrupt 7 or software interrupt 7</description>
+                <value>7</value>
+            </interrupt>
+            <interrupt>
+                <name>GLOBAL8_SWINT8</name>
+                <description>global interrupt 8 or software interrupt 8</description>
+                <value>8</value>
+            </interrupt>
+            <interrupt>
+                <name>GLOBAL9_SWINT9</name>
+                <description>global interrupt 9 or software interrupt 9</description>
+                <value>9</value>
+            </interrupt>
+            <interrupt>
+                <name>GLOBAL10_SWINT10</name>
+                <description>global interrupt 10 or software interrupt 10</description>
+                <value>10</value>
+            </interrupt>
+            <interrupt>
+                <name>GLOBAL11_SWINT11</name>
+                <description>global interrupt 11 or software interrupt 11</description>
+                <value>11</value>
+            </interrupt>
+            <interrupt>
+                <name>GLOBAL12_SWINT12</name>
+                <description>global interrupt 12 or software interrupt 12</description>
+                <value>12</value>
+            </interrupt>
+            <interrupt>
+                <name>GLOBAL13_SWINT13</name>
+                <description>global interrupt 13 or software interrupt 13</description>
+                <value>13</value>
+            </interrupt>
+            <interrupt>
+                <name>GLOBAL14_SWINT14</name>
+                <description>global interrupt 14 or software interrupt 14</description>
+                <value>14</value>
+            </interrupt>
+            <interrupt>
+                <name>GLOBAL15_SWINT15</name>
+                <description>global interrupt 15 or software interrupt 15</description>
+                <value>15</value>
+            </interrupt>
+            <interrupt>
+                <name>EXTINT0_SWINT16</name>
+                <description>external interrupt 0 or software interrupt 16</description>
+                <value>16</value>
+            </interrupt>
+            <interrupt>
+                <name>EXTINT1_SWINT17</name>
+                <description>external interrupt 1 or software interrupt 17</description>
+                <value>17</value>
+            </interrupt>
+            <interrupt>
+                <name>EXTINT2_SWINT18</name>
+                <description>external interrupt 2 or software interrupt 18</description>
+                <value>18</value>
+            </interrupt>
+            <interrupt>
+                <name>EXTINT3_SWINT19</name>
+                <description>external interrupt 3 or software interrupt 19</description>
+                <value>19</value>
+            </interrupt>
+            <interrupt>
+                <name>EXTINT4_SWINT20</name>
+                <description>external interrupt 4 or software interrupt 20</description>
+                <value>20</value>
+            </interrupt>
+            <interrupt>
+                <name>EXTINT5_SWINT21</name>
+                <description>external interrupt 5 or software interrupt 21</description>
+                <value>21</value>
+            </interrupt>
+            <interrupt>
+                <name>EXTINT6_SWINT22</name>
+                <description>external interrupt 6 or software interrupt 22</description>
+                <value>22</value>
+            </interrupt>
+            <interrupt>
+                <name>EXTINT7_SWINT23</name>
+                <description>external interrupt 7 or software interrupt 23</description>
+                <value>23</value>
+            </interrupt>
+            <interrupt>
+                <name>FPU_ERR</name>
+                <description>FPU error interrupt</description>
+                <value>32</value>
+            </interrupt>
             <registers>
                 <register>
                     <name>NMICR</name>
@@ -20168,12 +20283,18 @@
         <peripheral>
             <name>MAU</name>
             <description>desc MAU</description>
+            <groupName>MAU</groupName>
             <baseAddress>0x40054800</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x2C</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>MAU</name>
+                <description>MAU interrupt</description>
+                <value>33</value>
+            </interrupt>
             <registers>
                 <register>
                     <name>CSR</name>
@@ -20327,6 +20448,7 @@
         <peripheral>
             <name>PERIC</name>
             <description>desc PERIC</description>
+            <groupName>PERIC</groupName>
             <baseAddress>0x40054C00</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
@@ -20344,29 +20466,29 @@
                     <resetMask>0x1F001F</resetMask>
                     <fields>
                         <field>
-                            <name>TMR0_1_A</name>
-                            <description>desc TMR0_1_A</description>
+                            <name>TMR0_2_A</name>
+                            <description>desc TMR0_2_A</description>
                             <msb>0</msb>
                             <lsb>0</lsb>
                             <access>read-write</access>
                         </field>
                         <field>
-                            <name>TMR0_1_B</name>
-                            <description>desc TMR0_1_B</description>
+                            <name>TMR0_2_B</name>
+                            <description>desc TMR0_2_B</description>
                             <msb>1</msb>
                             <lsb>1</lsb>
                             <access>read-write</access>
                         </field>
                         <field>
-                            <name>TMR0_2_A</name>
-                            <description>desc TMR0_2_A</description>
+                            <name>TMR0_1_A</name>
+                            <description>desc TMR0_1_A</description>
                             <msb>2</msb>
                             <lsb>2</lsb>
                             <access>read-write</access>
                         </field>
                         <field>
-                            <name>TMR0_2_B</name>
-                            <description>desc TMR0_2_B</description>
+                            <name>TMR0_1_B</name>
+                            <description>desc TMR0_1_B</description>
                             <msb>3</msb>
                             <lsb>3</lsb>
                             <access>read-write</access>
@@ -20445,12 +20567,23 @@
         <peripheral>
             <name>PWC</name>
             <description>desc PWC</description>
+            <groupName>PWC</groupName>
             <baseAddress>0x40054000</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x54</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>LVD1</name>
+                <description>Low voltage detect unit 1 interrupt</description>
+                <value>69</value>
+            </interrupt>
+            <interrupt>
+                <name>LVD2</name>
+                <description>Low voltage detect unit 2 interrupt</description>
+                <value>70</value>
+            </interrupt>
             <registers>
                 <register>
                     <name>STPMCR</name>
@@ -20838,7 +20971,7 @@
                     <size>16</size>
                     <access>read-write</access>
                     <resetValue>0x0</resetValue>
-                    <resetMask>0x3</resetMask>
+                    <resetMask>0x1</resetMask>
                     <fields>
                         <field>
                             <name>DBGEN</name>
@@ -20846,13 +20979,6 @@
                             <msb>0</msb>
                             <lsb>0</lsb>
                             <access>read-write</access>
-                        </field>
-                        <field>
-                            <name>DBGWKF</name>
-                            <description>desc DBGWKF</description>
-                            <msb>1</msb>
-                            <lsb>1</lsb>
-                            <access>read-only</access>
                         </field>
                     </fields>
                 </register>
@@ -20897,6 +21023,7 @@
         <peripheral>
             <name>RMU</name>
             <description>desc RMU</description>
+            <groupName>RMU</groupName>
             <baseAddress>0x40054100</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
@@ -21197,12 +21324,18 @@
         <peripheral>
             <name>SPI</name>
             <description>desc SPI</description>
+            <groupName>SPI</groupName>
             <baseAddress>0x4001C000</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x1C</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>SPI</name>
+                <description>SPI interrupt</description>
+                <value>54</value>
+            </interrupt>
             <registers>
                 <register>
                     <name>DR</name>
@@ -21563,12 +21696,18 @@
         <peripheral>
             <name>SWDT</name>
             <description>desc SWDT</description>
+            <groupName>SWDT</groupName>
             <baseAddress>0x40049400</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0xC</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>SWDT</name>
+                <description>SWDT underflow or refresh error interrupt</description>
+                <value>37</value>
+            </interrupt>
             <registers>
                 <register>
                     <name>CR</name>
@@ -21671,12 +21810,18 @@
         <peripheral>
             <name>TMR01</name>
             <description>desc TMR0</description>
+            <groupName>TMR0</groupName>
             <baseAddress>0x40024000</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x18</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>TMR0_1</name>
+                <description>Timer0 unit 1 interrupt</description>
+                <value>34</value>
+            </interrupt>
             <registers>
                 <register>
                     <name>CNTAR</name>
@@ -21757,7 +21902,7 @@
                     <size>32</size>
                     <access>read-write</access>
                     <resetValue>0x0</resetValue>
-                    <resetMask>0xF7FFF7FF</resetMask>
+                    <resetMask>0xF3FFF3FF</resetMask>
                     <fields>
                         <field>
                             <name>CSTA</name>
@@ -21806,13 +21951,6 @@
                             <description>desc SYNCLKA</description>
                             <msb>9</msb>
                             <lsb>9</lsb>
-                            <access>read-write</access>
-                        </field>
-                        <field>
-                            <name>ASYNCLKA</name>
-                            <description>desc ASYNCLKA</description>
-                            <msb>10</msb>
-                            <lsb>10</lsb>
                             <access>read-write</access>
                         </field>
                         <field>
@@ -21890,13 +22028,6 @@
                             <description>desc SYNCLKB</description>
                             <msb>25</msb>
                             <lsb>25</lsb>
-                            <access>read-write</access>
-                        </field>
-                        <field>
-                            <name>ASYNCLKB</name>
-                            <description>desc ASYNCLKB</description>
-                            <msb>26</msb>
-                            <lsb>26</lsb>
                             <access>read-write</access>
                         </field>
                         <field>
@@ -22001,22 +22132,49 @@
         <peripheral derivedFrom="TMR01">
             <name>TMR02</name>
             <description>desc TMR0</description>
+            <groupName>TMR0</groupName>
             <baseAddress>0x40024400</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x18</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>TMR0_2</name>
+                <description>Timer0 unit 2 interrupt</description>
+                <value>35</value>
+            </interrupt>
         </peripheral>
         <peripheral>
             <name>TMR4</name>
             <description>desc TMR4</description>
+            <groupName>TMR4</groupName>
             <baseAddress>0x40017000</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
-                <size>0x110</size>
+                <size>0x11E</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>TMR4_GCMP</name>
+                <description>Timer4 compare matched interrupt</description>
+                <value>48</value>
+            </interrupt>
+            <interrupt>
+                <name>TMR4_OVF_UDF</name>
+                <description>Timer4 overflow or underflow interrupt</description>
+                <value>49</value>
+            </interrupt>
+            <interrupt>
+                <name>TMR4_RELOAD</name>
+                <description>Timer4 reload matched interrupt</description>
+                <value>50</value>
+            </interrupt>
+            <interrupt>
+                <name>TMR4_SCM</name>
+                <description>Timer4 special compare matched interrupt</description>
+                <value>51</value>
+            </interrupt>
             <registers>
                 <register>
                     <name>OCCR1UH</name>
@@ -25695,12 +25853,23 @@
         <peripheral>
             <name>TMRA1</name>
             <description>desc TMRA</description>
+            <groupName>TMRA</groupName>
             <baseAddress>0x40015000</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x146</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>TMRA_1_OVF_UDF</name>
+                <description>TimerA unit 1 overflow or underflow interrupt</description>
+                <value>38</value>
+            </interrupt>
+            <interrupt>
+                <name>TMRA_1_CMP</name>
+                <description>TimerA unit 1 compare matched interrupt</description>
+                <value>39</value>
+            </interrupt>
             <registers>
                 <register>
                     <name>CNTER</name>
@@ -26576,42 +26745,86 @@
         <peripheral derivedFrom="TMRA1">
             <name>TMRA2</name>
             <description>desc TMRA</description>
+            <groupName>TMRA</groupName>
             <baseAddress>0x40015400</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x146</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>TMRA_2_OVF_UDF</name>
+                <description>TimerA unit 2 overflow or underflow interrupt</description>
+                <value>40</value>
+            </interrupt>
+            <interrupt>
+                <name>TMRA_2_CMP</name>
+                <description>TimerA unit 2 compare matched interrupt</description>
+                <value>41</value>
+            </interrupt>
         </peripheral>
         <peripheral derivedFrom="TMRA1">
             <name>TMRA3</name>
             <description>desc TMRA</description>
+            <groupName>TMRA</groupName>
             <baseAddress>0x40015800</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x146</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>TMRA_3_OVF_UDF</name>
+                <description>TimerA unit 3 overflow or underflow interrupt</description>
+                <value>42</value>
+            </interrupt>
+            <interrupt>
+                <name>TMRA_3_CMP</name>
+                <description>TimerA unit 3 compare matched interrupt</description>
+                <value>43</value>
+            </interrupt>
         </peripheral>
         <peripheral derivedFrom="TMRA1">
             <name>TMRA4</name>
             <description>desc TMRA</description>
+            <groupName>TMRA</groupName>
             <baseAddress>0x40015C00</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x146</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>TMRA_4_OVF_UDF</name>
+                <description>TimerA unit 4 overflow or underflow interrupt</description>
+                <value>44</value>
+            </interrupt>
+            <interrupt>
+                <name>TMRA_4_CMP</name>
+                <description>TimerA unit 4 compare matched interrupt</description>
+                <value>45</value>
+            </interrupt>
         </peripheral>
         <peripheral>
             <name>TMRA5</name>
             <description>desc TMRA5</description>
+            <groupName>TMRA5</groupName>
             <baseAddress>0x40016000</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
-                <size>0x156</size>
+                <size>0x182</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>TMRA_5_OVF_UDF</name>
+                <description>TimerA unit 5 overflow or underflow interrupt</description>
+                <value>55</value>
+            </interrupt>
+            <interrupt>
+                <name>TMRA_5_CMP</name>
+                <description>TimerA unit 5 compare matched interrupt</description>
+                <value>56</value>
+            </interrupt>
             <registers>
                 <register>
                     <name>CNTER</name>
@@ -28316,12 +28529,28 @@
         <peripheral>
             <name>USART1</name>
             <description>desc USART</description>
+            <groupName>USART</groupName>
             <baseAddress>0x4001D000</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x1C</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>USART1</name>
+                <description>USART unit 1 interrupt</description>
+                <value>52</value>
+            </interrupt>
+            <interrupt>
+                <name>USART1_TC</name>
+                <description>USART unit 1 Transmission complete interrupt</description>
+                <value>53</value>
+            </interrupt>
+            <interrupt>
+                <name>USART1_WKUP</name>
+                <description>USART unit 1 RX weak-up interrupt</description>
+                <value>68</value>
+            </interrupt>
             <registers>
                 <register>
                     <name>SR</name>
@@ -28559,13 +28788,6 @@
                             <access>read-write</access>
                         </field>
                         <field>
-                            <name>RDINV</name>
-                            <description>desc RDINV</description>
-                            <msb>13</msb>
-                            <lsb>13</lsb>
-                            <access>read-write</access>
-                        </field>
-                        <field>
                             <name>OVER8</name>
                             <description>desc OVER8</description>
                             <msb>15</msb>
@@ -28794,12 +29016,23 @@
         <peripheral>
             <name>USART2</name>
             <description>desc USART</description>
+            <groupName>USART</groupName>
             <baseAddress>0x4001D400</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x20</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>USART2</name>
+                <description>USART unit 2 interrupt</description>
+                <value>57</value>
+            </interrupt>
+            <interrupt>
+                <name>USART2_TC</name>
+                <description>USART unit 2 Transmission complete interrupt</description>
+                <value>58</value>
+            </interrupt>
             <registers>
                 <register>
                     <name>SR</name>
@@ -28978,7 +29211,7 @@
                     <size>32</size>
                     <access>read-write</access>
                     <resetValue>0x80000000</resetValue>
-                    <resetMask>0xF31BD7FF</resetMask>
+                    <resetMask>0xF7FB97FF</resetMask>
                     <fields>
                         <field>
                             <name>RTOE</name>
@@ -29062,13 +29295,6 @@
                             <description>desc M</description>
                             <msb>12</msb>
                             <lsb>12</lsb>
-                            <access>read-write</access>
-                        </field>
-                        <field>
-                            <name>RDINV</name>
-                            <description>desc RDINV</description>
-                            <msb>13</msb>
-                            <lsb>13</lsb>
                             <access>read-write</access>
                         </field>
                         <field>
@@ -29430,32 +29656,60 @@
         <peripheral derivedFrom="USART2">
             <name>USART3</name>
             <description>desc USART</description>
+            <groupName>USART</groupName>
             <baseAddress>0x40021000</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x20</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>USART3</name>
+                <description>USART unit 3 interrupt</description>
+                <value>59</value>
+            </interrupt>
+            <interrupt>
+                <name>USART3_TC</name>
+                <description>USART unit 3 Transmission complete interrupt</description>
+                <value>60</value>
+            </interrupt>
         </peripheral>
         <peripheral derivedFrom="USART2">
             <name>USART4</name>
             <description>desc USART</description>
+            <groupName>USART</groupName>
             <baseAddress>0x40021400</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0x20</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>USART4</name>
+                <description>USART unit 4 interrupt</description>
+                <value>61</value>
+            </interrupt>
+            <interrupt>
+                <name>USART4_TC</name>
+                <description>USART unit 4 Transmission complete interrupt</description>
+                <value>62</value>
+            </interrupt>
         </peripheral>
         <peripheral>
             <name>WDT</name>
             <description>desc WDT</description>
+            <groupName>WDT</groupName>
             <baseAddress>0x40049000</baseAddress>
             <addressBlock>
                 <offset>0x0</offset>
                 <size>0xC</size>
                 <usage>registers</usage>
             </addressBlock>
+            <interrupt>
+                <name>WDT</name>
+                <description>WDT underflow or refresh error interrupt</description>
+                <value>72</value>
+            </interrupt>
             <registers>
                 <register>
                     <name>CR</name>
